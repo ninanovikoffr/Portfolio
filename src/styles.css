@@ -161,21 +161,19 @@ a {
   opacity: 1;
 }
 .hero__decoration--shine {
-  width: 380px;
-  height: 500px;
+  width: 500px;
+  height: 775px;
   top: 155px;
   left: 0;
-  right: auto;
   transform: translateX(-25%);
   opacity: 1;
 }
 .hero__decoration--star {
-  width: 520px;
-  height: 650px;
+  width: 856px;
+  height: 841px;
   top: 160px;
   right: 0;
-  left: auto;
-  transform: translateX(10%);
+  transform: translateX(-10%);
   opacity: 1;
 }
 
@@ -420,18 +418,18 @@ a {
     left: 62px;
   }
   .hero__decoration--shine {
-    width: 280px;
-    height: 340px;
+    width: 500px;
+    height: 775px;
     top: 205px;
     left: 0;
     transform: translateX(-25%);
   }
   .hero__decoration--star {
-    width: 330px;
-    height: 420px;
+    width: 856px;
+    height:841px;
     top: 270px;
     right: 0;
-    transform: translateX(10%);
+    transform: translateX(-10%);
   }
   .featured-project {
     display: block;
