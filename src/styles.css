@@ -6,6 +6,7 @@
   --text: #fff;
   --muted: #fff;
   --container-width: 1200px;
+
   font-family: 'Jost', sans-serif;
   color: var(--text);
   background: var(--background);
@@ -14,461 +15,846 @@
 * {
   box-sizing: border-box;
 }
+
 html {
   scroll-behavior: smooth;
 }
+
 body {
   margin: 0;
   min-width: 320px;
+
+  /* corta apenas o que sair horizontalmente da tela */
   overflow-x: hidden;
+
   background: var(--background);
 }
+
 img {
   display: block;
   max-width: 100%;
   height: auto;
 }
+
 a {
   color: inherit;
   text-decoration: none;
 }
 
+/* =========================
+   CONTAINER
+========================= */
+
 .container {
   width: min(100% - 64px, var(--container-width));
   margin-inline: auto;
 }
+
 .section {
   position: relative;
   padding-block: clamp(3.5rem, 8vw, 6rem);
 }
 
+/* =========================
+   HEADER
+========================= */
+
 .site-header {
   position: relative;
-  z-index: 2;
+  z-index: 10;
   height: 70px;
 }
+
 .site-header::before {
   content: '';
+
   position: absolute;
   top: -45px;
   right: 0;
+
   height: 237px;
   width: min(1080px, 90vw);
+
   pointer-events: none;
-  background: url('/assets/blurcima.svg') right center/contain no-repeat;
+
+  background:
+    url('/assets/blurcima.svg')
+    right center / contain
+    no-repeat;
+
   opacity: 0.8;
+
   z-index: 0;
 }
+
 .navigation {
   position: relative;
+
   display: flex;
   justify-content: center;
   align-items: center;
+
   height: 100%;
 }
+
 .navigation__logo {
   position: absolute;
   left: 0;
+
   font:
     15px 'Zen Dots',
     sans-serif;
+
   opacity: 0;
 }
+
 .navigation__links {
-  display: flex;
-  gap: clamp(3rem, 13vw, 10rem);
   position: relative;
   z-index: 1;
+
+  display: flex;
+
+  gap: clamp(3rem, 13vw, 10rem);
+
   color: #fff;
+
   font:
     16px 'Julius Sans One',
     sans-serif;
 }
+
 .navigation__links a {
   transition: color 0.2s;
 }
+
 .navigation__links a:hover {
   color: #fff;
 }
 
+/* =========================
+   HERO
+========================= */
+
 .hero {
+  position: relative;
+
   min-height: 470px;
+
   padding-top: 4.5rem;
+
+  /*
+    IMPORTANTE:
+    não colocamos overflow hidden.
+    As decorações podem continuar
+    aparecendo nas próximas seções.
+  */
+  overflow: visible;
+
+  z-index: 0;
 }
+
 .hero__content {
+  --hero-gutter: clamp(1.25rem, 10vw, 10rem);
+
+  position: relative;
+
   width: 100vw;
   max-width: none;
+
+  /*
+    Não existe height fixa nem max-height.
+    O conteúdo pode ultrapassar normalmente.
+  */
+  height: auto;
+  max-height: none;
+
   min-height: 420px;
+
   margin-left: calc(50% - 50vw);
-  padding-inline: clamp(1.25rem, 10vw, 10rem);
-  position: relative;
-  isolation: isolate;
+
+  padding-inline: var(--hero-gutter);
+
+  overflow: visible;
 }
+
+/* =========================
+   NOME
+========================= */
+
+.hero__name {
+  position: relative;
+  z-index: 2;
+}
+
 .hero__name h1 {
   margin: 0;
-  position: relative;
-  z-index: 1;
-  position: relative;
-  z-index: 1;
+
   color: #fff;
+
   font:
-    clamp(3.2rem, 8.9vw, 8rem) / 0.97 'Zen Dots',
+    clamp(3.2rem, 8.9vw, 8rem) / 0.97
+    'Zen Dots',
     sans-serif;
-  
 }
+
+/* =========================
+   CARGO
+========================= */
+
 .hero__role {
   position: absolute;
-  z-index: 1;
+  z-index: 2;
+
   top: 135px;
   right: 4%;
 }
+
 .hero__role h2 {
   margin: 0;
+
   font:
-    clamp(2.2rem, 4vw, 3rem) / 0.85 'Baskervville',
+    clamp(2.2rem, 4vw, 3rem) / 0.85
+    'Baskervville',
     Georgia,
     serif;
+
   font-weight: 400;
 }
+
 .hero__role p {
   margin: 0.7rem 0 0;
+
   font:
-    clamp(1rem, 1.5vw, 1.1rem) 'Baskervville',
+    clamp(1rem, 1.5vw, 1.1rem)
+    'Baskervville',
     Georgia,
     serif;
 }
+
+/* =========================
+   DESCRIÇÃO
+========================= */
+
 .hero__description {
   position: absolute;
-  z-index: 1;
+  z-index: 2;
+
   top: 285px;
-  left: 0;
+  left: var(--hero-gutter);
+
   margin: 0;
+
   font:
-    clamp(0.78rem, 1.3vw, 0.95rem) / 1.4 'Jost',
+    clamp(0.78rem, 1.3vw, 0.95rem) / 1.4
+    'Jost',
     sans-serif;
 }
+
+/* =========================
+   DECORAÇÕES HERO
+========================= */
+
 .hero__decoration {
   position: absolute;
+
   pointer-events: none;
-  z-index: 0;
+
   object-fit: contain;
+
+  /*
+    Ficam atrás dos textos,
+    mas continuam aparecendo
+    nas próximas seções.
+  */
+  z-index: 0;
 }
+
+/* círculo atrás do nome */
+
 .hero__decoration--loop {
   width: 360px;
   height: 145px;
+
   top: 82px;
-  left: 135px;
+  left: calc(var(--hero-gutter) + 135px);
+
   opacity: 1;
 }
+
+/*
+  BRILHO
+
+  Sempre calculado a partir
+  da margem esquerda da viewport.
+*/
+
 .hero__decoration--shine {
   width: 500px;
   height: 775px;
+
   top: 155px;
   left: 0;
+
   transform: translateX(-25%);
+
   opacity: 1;
 }
+
+/*
+  ESTRELA
+
+  Sempre calculada a partir
+  da margem direita da viewport.
+*/
+
 .hero__decoration--star {
   width: 856px;
   height: 841px;
+
   top: 160px;
   right: 0;
-  transform: translateX(-10%);
+
+  transform: translateX(20%);
+
   opacity: 1;
 }
+
+/* =========================
+   TÍTULOS
+========================= */
 
 .section-heading,
 .subsection-heading {
   margin: 0;
+
   font-family: 'Julius Sans One', sans-serif;
+
   font-weight: 400;
+
   text-transform: uppercase;
+
   letter-spacing: 1px;
 }
+
 .section-heading {
   margin-bottom: 2rem;
+
   text-align: center;
+
   font-size: clamp(1.45rem, 3vw, 1.9rem);
 }
+
+/* =========================
+   PROJETOS EM DESTAQUE
+========================= */
+
+.projects-section {
+  /*
+    A seção continua transparente.
+    Assim os efeitos do Hero
+    aparecem atrás dela.
+  */
+  position: relative;
+
+  background: transparent;
+
+  z-index: 1;
+}
+
+.projects-section .container {
+  position: relative;
+  z-index: 2;
+}
+
 .featured-projects {
   display: grid;
+
   gap: 1rem;
+
   max-width: 1030px;
+
   margin-inline: auto;
 }
+
 .featured-project {
+  position: relative;
+
   display: flex;
+
   align-items: center;
   justify-content: space-between;
+
   gap: 2rem;
+
   min-height: 209px;
+
   padding: 1rem 1.5rem;
+
   overflow: hidden;
+
   border-radius: 10px;
+
   background: var(--surface);
+
+  z-index: 2;
 }
+
 .featured-project__content {
   flex: 1 1 50%;
+
   min-width: 0;
 }
+
 .featured-project h3,
 .project-card h3 {
   margin: 0 0 0.75rem;
+
   font-family: 'Zen Dots', sans-serif;
 }
+
 .featured-project h3 {
   font-size: clamp(1rem, 2vw, 1.45rem);
 }
+
 .featured-project p,
 .project-card p,
 .about__content p {
   color: var(--muted);
+
   font-family: 'Jost', sans-serif;
 }
+
 .featured-project p {
   max-width: 400px;
+
   margin: 0 0 1rem;
+
   font-size: 0.78rem;
+
   line-height: 1.4;
 }
+
 .featured-project__image {
   flex: 0 1 48%;
 }
+
 .featured-project__image img {
   width: 100%;
+
   object-fit: contain;
 }
+
+/* =========================
+   TAGS
+========================= */
+
 .tag-list {
   display: flex;
+
   flex-wrap: wrap;
+
   gap: 0.4rem;
+
   margin-bottom: 0.8rem;
 }
+
 .tag-list span {
   padding: 0.25rem 0.7rem;
+
   border: 1px solid #50a2a5;
+
   border-radius: 3px;
+
   background: #24666c;
+
   font-size: 0.6rem;
 }
+
+/* =========================
+   BOTÃO
+========================= */
+
 .action-button {
   display: inline-flex;
+
   align-items: center;
+
   gap: 0.45rem;
+
   padding: 0.25rem 0.7rem 0.25rem 0.8rem;
+
   border: 1px solid #d1d1d1;
+
   border-radius: 14px;
+
   font-size: 0.7rem;
+
   text-transform: uppercase;
+
   transition:
     background 0.2s,
     color 0.2s;
 }
+
 .action-button span {
   font-size: 1rem;
+
   line-height: 0.6;
 }
+
 .action-button:hover {
   color: var(--background);
+
   background: #fff;
 }
 
+/* =========================
+   OUTROS PROJETOS
+========================= */
+
 .other-projects-section {
-  background: url('/assets/linhas.svg') center/100% auto no-repeat;
+  position: relative;
+
+  background:
+    url('/assets/linhas.svg')
+    center / 100% auto
+    no-repeat;
+
+  z-index: 1;
 }
+
 .other-projects {
   display: grid;
+
   grid-template-columns: repeat(3, minmax(0, 1fr));
+
   gap: 0.9rem;
+
   max-width: 1055px;
+
   margin-inline: auto;
 }
+
 .project-card {
   position: relative;
+
   z-index: 1;
+
   min-width: 0;
+
   padding: 0.75rem;
+
   border-radius: 9px;
+
   background: var(--surface);
 }
+
 .project-card img {
   width: 100%;
+
   aspect-ratio: 1.5;
+
   object-fit: contain;
+
   border-radius: 4px;
+
   background: #111;
 }
+
 .project-card h3 {
   margin-top: 0.7rem;
   margin-bottom: 0.5rem;
+
   text-align: center;
+
   font-size: clamp(0.9rem, 1.8vw, 1.2rem);
 }
+
 .project-card p {
   margin: 0;
+
   text-align: justify;
+
   font-size: 0.65rem;
+
   line-height: 1.4;
+}
+
+/* =========================
+   SKILLS
+========================= */
+
+.skills-section {
+  position: relative;
+  z-index: 1;
 }
 
 .skills-layout {
   display: grid;
+
   grid-template-columns: repeat(2, minmax(0, 1fr));
+
   gap: clamp(3rem, 11vw, 8rem);
+
   max-width: 950px;
 }
+
 .subsection-heading {
   margin-bottom: 1.3rem;
+
   font-size: clamp(1.1rem, 2vw, 1.4rem);
 }
+
 .tools-list {
   display: grid;
+
   grid-template-columns: repeat(4, 45px);
+
   gap: 0.5rem;
 }
+
 .tools-list img {
   width: 45px;
   height: 45px;
+
   padding: 5px;
+
   border-radius: 9px;
+
   background: #222;
+
   object-fit: contain;
 }
+
 .additional-project {
   display: flex;
+
   align-items: flex-start;
+
   gap: 0.7rem;
+
   margin-bottom: 1rem;
+
   font-size: clamp(0.75rem, 1.5vw, 0.95rem);
+
   text-decoration: underline;
 }
+
 .additional-project img {
   width: 20px;
   height: 20px;
+
   flex: 0 0 20px;
 }
 
+/* =========================
+   SOBRE
+========================= */
+
 .about-section {
-  background: url('/assets/blurfooter.svg') center bottom/100% auto no-repeat;
+  position: relative;
+
+  background:
+    url('/assets/blurfooter.svg')
+    center bottom / 100% auto
+    no-repeat;
+
+  z-index: 1;
 }
+
 .about-layout {
   display: flex;
+
   align-items: center;
+
   gap: 3rem;
+
   max-width: 900px;
+
   margin-inline: auto;
 }
+
 .about__image {
   width: 185px;
+
   flex: 0 1 185px;
 }
+
 .about__content {
   flex: 1 1 auto;
 }
+
 .about__content p {
   margin: 0 0 1.2rem;
+
   font-size: clamp(0.75rem, 1.4vw, 0.9rem);
+
   line-height: 1.45;
 }
+
+/* =========================
+   FOOTER
+========================= */
+
 .site-footer {
+  position: relative;
+
+  z-index: 2;
+
   padding-block: 1.2rem;
+
   border-top: 1px solid #252525;
+
   color: #fff;
+
   font-size: 0.7rem;
 }
+
 .site-footer span {
   float: right;
 }
+
+/* =========================
+   MOBILE
+========================= */
 
 @media (max-width: 700px) {
   .container {
     width: min(100% - 36px, var(--container-width));
   }
+
   .navigation__links {
     gap: 1.5rem;
+
     font-size: 0.75rem;
   }
+
   .hero {
     min-height: 490px;
+
     padding-top: 3.8rem;
+
+    overflow: visible;
   }
+
   .hero__content {
+    --hero-gutter: 1.25rem;
+
     width: 100vw;
+
+    height: auto;
+    max-height: none;
+
     min-height: 430px;
-    padding-inline: 1.25rem;
+
+    padding-inline: var(--hero-gutter);
+
+    overflow: visible;
   }
+
   .hero__role {
     top: 145px;
-    right: 0;
+    right: 1.25rem;
   }
+
   .hero__role h2 {
     font-size: clamp(1.9rem, 9vw, 2.4rem);
   }
+
   .hero__role p {
     font-size: 0.85rem;
   }
+
   .hero__description {
     top: 300px;
+    left: var(--hero-gutter);
+
     font-size: 0.72rem;
   }
+
   .hero__decoration--loop {
     width: 210px;
     height: 100px;
+
     top: 62px;
     left: 62px;
   }
+
   .hero__decoration--shine {
     width: 500px;
     height: 775px;
+
     top: 205px;
     left: 0;
-    transform: translateX(-25%);
+
+    transform: translateX(-40%);
   }
+
   .hero__decoration--star {
     width: 856px;
-    height:841px;
+    height: 841px;
+
     top: 270px;
     right: 0;
-    transform: translateX(-10%);
+
+    transform: translateX(65%);
   }
+
   .featured-project {
     display: block;
+
     padding: 1rem;
   }
+
   .featured-project__image {
     margin-top: 1.2rem;
   }
+
   .other-projects {
     grid-template-columns: 1fr;
+
     gap: 1.2rem;
   }
+
   .project-card p {
     font-size: 0.72rem;
   }
+
   .skills-layout {
     grid-template-columns: 1fr;
+
     gap: 3rem;
   }
+
   .about-layout {
     flex-direction: column;
+
     align-items: flex-start;
+
     gap: 2rem;
   }
+
   .about__image {
     width: min(190px, 60vw);
+
     flex-basis: auto;
   }
+
   .desktop-only {
     display: none;
   }
+
   .other-projects-section {
     background-size: auto 100%;
   }
+
   .site-header::before {
     top: -20px;
-    width: 100%;
     right: 0;
     left: auto;
+
+    width: 100%;
+
     background-position: right center;
   }
 }

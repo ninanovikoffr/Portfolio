@@ -53,7 +53,10 @@ const tools = [
 function Header() {
   return (
     <header className="site-header">
-      <nav className="container navigation" aria-label="Navegação principal">
+      <nav
+        className="container navigation"
+        aria-label="Navegação principal"
+      >
         <a className="navigation__logo" href="#inicio">
           NN
         </a>
@@ -96,11 +99,13 @@ function Hero() {
           src={asset('loop.svg')}
           alt=""
         />
+
         <img
           className="hero__decoration hero__decoration--shine"
           src={asset('brilhino.svg')}
           alt=""
         />
+
         <img
           className="hero__decoration hero__decoration--star"
           src={asset('estrela.svg')}
@@ -125,6 +130,7 @@ function FeaturedProject({ project }) {
     <article className="featured-project">
       <div className="featured-project__content">
         <h3>{project.title}</h3>
+
         <p>{project.description}</p>
 
         <div className="tag-list">
@@ -148,13 +154,21 @@ function FeaturedProject({ project }) {
 
 function FeaturedProjects() {
   return (
-    <section className="section projects-section" id="projetos">
+    <section
+      className="section projects-section"
+      id="projetos"
+    >
       <div className="container">
-        <h2 className="section-heading">Projetos em destaque</h2>
+        <h2 className="section-heading">
+          Projetos em destaque
+        </h2>
 
         <div className="featured-projects">
           {featuredProjects.map((project) => (
-            <FeaturedProject key={project.title} project={project} />
+            <FeaturedProject
+              key={project.title}
+              project={project}
+            />
           ))}
         </div>
       </div>
@@ -166,16 +180,23 @@ function OtherProjects() {
   return (
     <section className="section other-projects-section">
       <div className="container">
-        <h2 className="section-heading">Outros projetos</h2>
+        <h2 className="section-heading">
+          Outros projetos
+        </h2>
 
         <div className="other-projects">
           {otherProjects.map((project) => (
-            <article className="project-card" key={project.title}>
+            <article
+              className="project-card"
+              key={project.title}
+            >
               <img
                 src={asset(project.image)}
                 alt={`Projeto ${project.title}`}
               />
+
               <h3>{project.title}</h3>
+
               <p>{project.description}</p>
             </article>
           ))}
@@ -190,25 +211,47 @@ function Skills() {
     <section className="section skills-section">
       <div className="container skills-layout">
         <div className="skills-column">
-          <h2 className="subsection-heading">Ferramentas</h2>
+          <h2 className="subsection-heading">
+            Ferramentas
+          </h2>
 
           <div className="tools-list">
             {tools.map((tool) => (
-              <img key={tool} src={asset(tool)} alt="" />
+              <img
+                key={tool}
+                src={asset(tool)}
+                alt=""
+              />
             ))}
           </div>
         </div>
 
         <div className="skills-column">
-          <h2 className="subsection-heading">Além do design</h2>
+          <h2 className="subsection-heading">
+            Além do design
+          </h2>
 
-          <a className="additional-project" href="#contato">
-            <img src={asset('dicoroxo.png')} alt="" />
+          <a
+            className="additional-project"
+            href="#contato"
+          >
+            <img
+              src={asset('dicoroxo.png')}
+              alt=""
+            />
+
             Compilador de Mini-linguagem em C
           </a>
 
-          <a className="additional-project" href="#contato">
-            <img src={asset('dicoroxo.png')} alt="" />
+          <a
+            className="additional-project"
+            href="#contato"
+          >
+            <img
+              src={asset('dicoroxo.png')}
+              alt=""
+            />
+
             Projeto de Algoritmos em Grafos em Python
           </a>
         </div>
@@ -219,9 +262,14 @@ function Skills() {
 
 function About() {
   return (
-    <section className="section about-section" id="sobre">
+    <section
+      className="section about-section"
+      id="sobre"
+    >
       <div className="container">
-        <h2 className="section-heading">Sobre mim</h2>
+        <h2 className="section-heading">
+          Sobre mim
+        </h2>
 
         <div className="about-layout">
           <img
@@ -236,10 +284,13 @@ function About() {
               Universidade Federal de Lavras (UFLA) e gosto de explorar a
               interseção entre design, produto e tecnologia.
             </p>
+
             <p>
-              Gosto de entender problemas, organizar ideias e transformá-las em
-              experiências digitais simples, intuitivas e visualmente cuidadas.
+              Gosto de entender problemas, organizar ideias e transformá-las
+              em experiências digitais simples, intuitivas e visualmente
+              cuidadas.
             </p>
+
             <ActionButton>Ver currículo</ActionButton>
           </div>
         </div>
