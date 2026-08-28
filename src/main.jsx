@@ -187,6 +187,11 @@ function FeaturedProjects() {
 function OtherProjects() {
   return (
     <section className="section other-projects-section">
+      <img
+        className="other-projects-section__lines"
+        src={asset('linhas.svg')}
+        alt=""
+      />
       <div className="container">
         <h2 className="section-heading">
           Outros projetos
@@ -328,12 +333,7 @@ function App() {
         <About />
       </main>
 
-      <footer className="site-footer">
-        <div className="container">
-          Nina Novikroff
-          <span>© 2025</span>
-        </div>
-      </footer>
+      
     </>
   )
 }
