@@ -119,8 +119,10 @@ function Hero() {
 function ActionButton({ children }) {
   return (
     <a className="action-button" href="#contato">
-      {children}
-      <span>〉</span>
+      <span>{children}</span>
+      <svg xmlns="http://www.w3.org/2000/svg" width="9" height="17" viewBox="0 0 9 17" fill="none">
+        <path d="M0.241859 15.5667C0.164601 15.6478 0.104204 15.7432 0.0641136 15.8474C0.0240231 15.9517 0.00502586 16.0628 0.00820637 16.1743C0.0113869 16.2859 0.036684 16.3957 0.0826511 16.4975C0.128619 16.5994 0.194357 16.6912 0.276114 16.7679C0.357869 16.8445 0.454042 16.9044 0.559141 16.9442C0.664239 16.984 0.776204 17.0028 0.888644 16.9997C1.00108 16.9965 1.1118 16.9714 1.21446 16.9258C1.31712 16.8802 1.40973 16.815 1.48699 16.7339L8.76592 9.08838C8.91624 8.93066 9 8.72183 9 8.50477C9 8.28772 8.91624 8.07889 8.76592 7.92117L1.48699 0.274803C1.41024 0.191925 1.31765 0.125 1.21461 0.0779171C1.11157 0.0308342 1.00013 0.00452995 0.886752 0.000534058C0.773376 -0.00346184 0.660331 0.0149307 0.55418 0.0546417C0.44803 0.0943508 0.350893 0.154589 0.268409 0.231855C0.185925 0.30912 0.11974 0.401875 0.0736971 0.50473C0.0276546 0.607586 0.00267315 0.718491 0.000203133 0.831005C-0.00226688 0.943518 0.0178232 1.0554 0.0593081 1.16014C0.100793 1.26489 0.162845 1.36041 0.241859 1.44117L6.96589 8.50477L0.241859 15.5667Z" fill="white"/>
+      </svg>
     </a>
   )
 }
@@ -139,7 +141,7 @@ function FeaturedProject({ project }) {
           ))}
         </div>
 
-        <ActionButton>Conhecer</ActionButton>
+        <ActionButton>CONHECER</ActionButton>
       </div>
 
       <div className="featured-project__image">
@@ -158,7 +160,6 @@ function FeaturedProjects() {
       className="section projects-section"
       id="projetos"
     >
-      {/* Imagem da corrente adicionada ao fundo */}
       <img
         className="projects-section__chain"
         src={asset('corrente.svg')}
