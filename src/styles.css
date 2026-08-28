@@ -96,7 +96,11 @@ a {
   padding-top: 4.5rem;
 }
 .hero__content {
+  width: 100vw;
+  max-width: none;
   min-height: 420px;
+  margin-left: calc(50% - 50vw);
+  padding-inline: clamp(1.25rem, 10vw, 10rem);
   position: relative;
   isolation: isolate;
 }
@@ -157,19 +161,21 @@ a {
   opacity: 1;
 }
 .hero__decoration--shine {
-  width: 320px;
-  height: 360px;
-  top: 165px;
-  left: -105px;
+  width: 380px;
+  height: 500px;
+  top: 155px;
+  left: 0;
   right: auto;
+  transform: translateX(-25%);
   opacity: 1;
 }
 .hero__decoration--star {
-  width: 420px;
-  height: 520px;
-  top: 175px;
-  right: -155px;
+  width: 520px;
+  height: 650px;
+  top: 160px;
+  right: 0;
   left: auto;
+  transform: translateX(10%);
   opacity: 1;
 }
 
@@ -389,7 +395,9 @@ a {
     padding-top: 3.8rem;
   }
   .hero__content {
+    width: 100vw;
     min-height: 430px;
+    padding-inline: 1.25rem;
   }
   .hero__role {
     top: 145px;
@@ -412,16 +420,18 @@ a {
     left: 62px;
   }
   .hero__decoration--shine {
-    width: 220px;
-    height: 260px;
-    top: 175px;
-    left: -130px;
+    width: 280px;
+    height: 340px;
+    top: 205px;
+    left: 0;
+    transform: translateX(-25%);
   }
   .hero__decoration--star {
-    width: 285px;
-    height: 350px;
-    top: 275px;
-    right: -155px;
+    width: 330px;
+    height: 420px;
+    top: 270px;
+    right: 0;
+    transform: translateX(10%);
   }
   .featured-project {
     display: block;
