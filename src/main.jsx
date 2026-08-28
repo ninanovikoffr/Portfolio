@@ -9,14 +9,14 @@ const featuredProjects = [
     title: 'NextPath',
     image: 'nextpath.png',
     description:
-      'Aplicativo de busca de emprego baseado em compatibilidade entre candidatos e oportunidades.',
+      'Aplicativo de busca de emprego baseado em compatibilidade entre candidatos e oportunidades Desenvolvido a partir de pesquisa, prototipação e testes de usabilidade.',
     tags: ['UX/UI', 'Figma', 'Pesquisa', 'Usabilidade'],
   },
   {
     title: 'Redação Inteligente',
     image: 'redacaointeligente.png',
     description:
-      'Plataforma educacional desenvolvida para alunos, corretores e administradores.',
+      'Plataforma educacional desenvolvida para atender alunos, corretores e administradores, com múltiplos fluxos, regras de negócio e possibilidades de configuração.',
     tags: ['GitHub', 'Figma', 'Sistema Web', 'Colaboração'],
   },
 ]
@@ -25,17 +25,17 @@ const otherProjects = [
   {
     title: 'Terroir',
     image: 'terroir.png',
-    description: 'Projeto acadêmico de Engenharia de Software.',
+    description: 'Projeto acadêmico de Engenharia de Software desenvolvido de ponta a ponta, passando por requisitos, casos de uso, backlog, design e implementação. Atuei principalmente como Product Owner e Designer, conectando decisões de produto às necessidades técnicas do projeto.',
   },
   {
     title: 'Conseajr',
     image: 'conseajr.png',
-    description: 'Landing page desenvolvida para apresentar serviços.',
+    description: 'Landing page desenvolvida na Emakers Jr. para apresentar os serviços da Consea Jr. de forma mais clara e profissional. A página também teve impacto comercial: após conhecerem o projeto, os potenciais clientes avançaram na negociação e fecharam com a empresa.',
   },
   {
     title: 'Fluori',
     image: 'fluori.png',
-    description: 'Plataforma web de estudos com ferramentas de produtividade.',
+    description: 'Plataforma web de estudos criada como projeto de entrada na Emakers Jr. e meu primeiro projeto no Figma. Reuni calendário, materiais, Pomodoro, timers, sons de concentração e tarefas em uma experiência simples e intuitiva, reduzindo a complexidade comum em plataformas de produtividade.',
   },
 ]
 
@@ -158,6 +158,13 @@ function FeaturedProjects() {
       className="section projects-section"
       id="projetos"
     >
+      {/* Imagem da corrente adicionada ao fundo */}
+      <img
+        className="projects-section__chain"
+        src={asset('corrente.svg')}
+        alt=""
+      />
+      
       <div className="container">
         <h2 className="section-heading">
           Projetos em destaque
@@ -286,12 +293,20 @@ function About() {
             </p>
 
             <p>
-              Gosto de entender problemas, organizar ideias e transformá-las
-              em experiências digitais simples, intuitivas e visualmente
-              cuidadas.
+              Também exploro programação e realidade virtual, ampliando minha
+              visão sobre como produtos digitais são pensados e construídos.
             </p>
 
             <ActionButton>Ver currículo</ActionButton>
+
+            <div className="about__socials" id="contato">
+              <a href="#sobre" aria-label="E-mail">
+                <img src={asset('emailicone.svg')} alt="" />
+              </a>
+              <a href="#sobre" aria-label="LinkedIn">
+                <img src={asset('linkedin.svg')} alt="" />
+              </a>
+            </div>
           </div>
         </div>
       </div>
