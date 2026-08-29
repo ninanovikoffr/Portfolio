@@ -18,13 +18,19 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden; /* Trava qualquer scroll horizontal na raiz */
 }
 
 body {
   margin: 0;
-  min-width: 320px;
-  overflow-x: hidden;
+  min-width: 300px;
+  overflow-x: hidden; /* Trava qualquer scroll horizontal na raiz */
   background: var(--background);
+  width: 100%;
+}
+
+main {
+  padding-top: 70px; /* Compensa a altura do header absolute para não encavalar */
 }
 
 img {
@@ -57,8 +63,11 @@ a {
 ========================= */
 
 .site-header {
-  position: relative;
-  z-index: 10;
+  position: absolute; /* Retirado do fluxo da página para não quebrar o cálculo do Scroll */
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
   height: 70px;
 }
 
@@ -113,7 +122,7 @@ a {
 ========================= */
 
 .site-header--sticky {
-  position: fixed;
+  position: fixed; /* Troca de absolute para fixed sem dar pulos na tela */
   top: -70px; 
   left: 0;
   width: 100%;
@@ -129,12 +138,8 @@ a {
 }
 
 @keyframes slideDownNav {
-  from {
-    top: -70px;
-  }
-  to {
-    top: 0;
-  }
+  from { top: -70px; }
+  to { top: 0; }
 }
 
 /* =========================
@@ -152,12 +157,11 @@ a {
 .hero__content {
   --hero-gutter: clamp(1.25rem, 10vw, 10rem);
   position: relative;
-  width: 100vw;
-  max-width: none;
+  width: 100%; /* Corrigido de 100vw para evitar barra de rolagem */
+  max-width: 100%;
   height: auto;
-  max-height: none;
   min-height: 420px;
-  margin-left: calc(50% - 50vw);
+  margin-left: 0; /* Centralização automática pelo container */
   padding-inline: var(--hero-gutter);
   overflow: visible;
 }
@@ -172,7 +176,7 @@ a {
   margin-left: 20px;
   color: #FFF;
   font-family: "Zen Dots";
-  font-size: 128px;
+  font-size: clamp(50px, 9vw, 128px);
   font-style: normal;
   font-weight: 400;
   line-height: 123.183%; 
@@ -183,13 +187,15 @@ a {
   z-index: 2;
   top: 300px;
   right: 4%;
+  width: max-content;
+  max-width: 90%;
 }
 
 .hero__role h2 {
   margin: 0;
   color: #FFF;
   font-family: 'Baskervville';
-  font-size: 72px;
+  font-size: clamp(32px, 5vw, 72px);
   font-style: normal;
   font-weight: 400;
   line-height: 123.183%; 
@@ -199,7 +205,7 @@ a {
   margin: 0.2rem 0 0;
   color: #FFF;
   font-family: 'Baskervville';
-  font-size: 36px;
+  font-size: clamp(16px, 2.5vw, 36px);
   font-style: normal;
   font-weight: 400;
   line-height: 123.183%;
@@ -213,13 +219,14 @@ a {
   z-index: 2;
   color: #FFF;
   font-family: 'Jost';
-  font-size: 32px;
+  font-size: clamp(18px, 2.5vw, 32px);
   font-style: normal;
   font-weight: 400;
   line-height: 123.183%;
   top: 500px;
   left: var(--hero-gutter);
   margin-left: 5px;
+  max-width: 80%;
 }
 
 .hero__decoration {
@@ -267,7 +274,7 @@ a {
   text-align: center;
   color: #FFF;
   font-family: "Julius Sans One";
-  font-size: 65px;
+  font-size: clamp(40px, 5vw, 65px); 
   font-style: normal;
   font-weight: 400;
   line-height: 123.183%; 
@@ -279,7 +286,7 @@ a {
   margin: 0 0 2.5rem 0;
   color: #FFF;
   font-family: "Julius Sans One";
-  font-size: 48px;
+  font-size: clamp(32px, 4vw, 48px); 
   font-style: normal;
   font-weight: 400;
   line-height: 123.183%; 
@@ -317,7 +324,7 @@ a {
 }
 
 .projects-section .section-heading {
-  font-size: 56px;
+  font-size: clamp(32px, 5vw, 56px); 
   line-height: 1.232;
   margin-bottom: 4rem;
 }
@@ -355,7 +362,7 @@ a {
   margin: 0 0 1.2rem;
   color: #FFF;
   font-family: "Zen Dots", sans-serif;
-  font-size: 40px;
+  font-size: clamp(28px, 4vw, 40px);
   font-style: normal;
   font-weight: 400;
   line-height: 123.183%; 
@@ -364,7 +371,7 @@ a {
 .featured-project p {
   color: #FFF;
   font-family: "Jost", sans-serif;
-  font-size: 24px;
+  font-size: clamp(18px, 2vw, 24px);
   font-style: normal;
   font-weight: 300;
   line-height: 123.183%; 
@@ -732,6 +739,91 @@ a {
   aspect-ratio: 1/1;
 }
 
+/* =========================
+   TABLET
+========================= */
+
+@media (max-width: 1024px) {
+  .navigation__links {
+    gap: clamp(2rem, 5vw, 5rem);
+  }
+
+  .hero {
+    min-height: 600px;
+  }
+
+  .hero__role {
+    top: 250px;
+    right: 5%;
+  }
+
+  .hero__description {
+    top: 420px;
+    max-width: 70%;
+  }
+
+  .hero__decoration--star {
+    transform: translateX(40%);
+    width: 600px;
+  }
+
+  .hero__decoration--shine {
+    transform: translateX(-30%);
+    width: 400px;
+  }
+
+  .hero__decoration--loop {
+    top: 100px;
+    width: 350px;
+  }
+
+  .featured-project {
+    flex-direction: column;
+    padding: 2.5rem;
+    gap: 2.5rem;
+  }
+
+  .featured-project__image {
+    flex: auto;
+    width: 100%;
+  }
+
+  .skills-layout {
+    flex-direction: column;
+    align-items: center;
+    gap: 4.5rem;
+  }
+
+  .tools-list, 
+  .beyond-design-list {
+    width: 100%;
+    max-width: 550px;
+  }
+
+  .about-layout {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 3rem;
+  }
+
+  .about__image {
+    width: 100%;
+    max-width: 400px;
+    flex-basis: auto;
+  }
+
+  .about-heading {
+    text-align: center;
+    margin: 0 0 1.5rem 0;
+  }
+
+  .about__footer {
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+  }
+}
 
 /* =========================
    MOBILE
@@ -739,7 +831,7 @@ a {
 
 @media (max-width: 700px) {
   .container {
-    width: min(100% - 36px, var(--container-width));
+    width: min(100% - 24px, var(--container-width));
   }
 
   .navigation__links {
@@ -748,38 +840,35 @@ a {
   }
 
   .hero {
-    min-height: 490px;
-    padding-top: 3.8rem;
+    min-height: 480px;
+    padding-top: 3.5rem;
     overflow: visible;
   }
 
   .hero__content {
-    --hero-gutter: 1.25rem;
-    width: 100vw;
+    --hero-gutter: 12px; 
+    width: 100%;         
+    margin-left: 0;      
     height: auto;
     max-height: none;
-    min-height: 430px;
+    min-height: 400px;
     padding-inline: var(--hero-gutter);
     overflow: visible;
   }
 
+  .hero__name h1 {
+    margin-left: 0;
+  }
+
   .hero__role {
-    top: 145px;
-    right: 1.25rem;
-  }
-
-  .hero__role h2 {
-    font-size: clamp(1.9rem, 9vw, 2.4rem);
-  }
-
-  .hero__role p {
-    font-size: 0.85rem;
+    top: 155px; 
+    right: var(--hero-gutter);
   }
 
   .hero__description {
-    top: 300px;
+    top: 270px; 
     left: var(--hero-gutter);
-    font-size: 0.72rem;
+    max-width: 95%;
   }
 
   .hero__decoration--loop {
@@ -811,12 +900,11 @@ a {
   }
 
   .projects-section .section-heading {
-    font-size: clamp(1.8rem, 7vw, 2.5rem);
+    font-size: clamp(28px, 7vw, 40px);
     margin-bottom: 2rem;
   }
 
   .featured-project {
-    flex-direction: column;
     padding: 2rem;
     gap: 2rem;
   }
@@ -871,10 +959,6 @@ a {
     gap: 4rem;
   }
 
-  .subsection-heading {
-    font-size: clamp(1.8rem, 7vw, 2.5rem);
-  }
-
   .tools-list {
     width: 100%;
     max-width: 350px;
@@ -904,38 +988,24 @@ a {
     height: 40px;
   }
 
+  .skills-section {
+    padding-bottom: 3rem; 
+  }
+
   .about-section {
-    padding-top: 3.5rem;
+    padding-top: 1rem;
     padding-bottom: 3.5rem;
-  }
-
-  .about-layout {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 2rem;
-  }
-
-  .about-heading {
-    text-align: center;
-    margin: 0 0 1.5rem 0; 
   }
 
   .about__image {
     width: 100%;
     max-width: 350px;
-    height: auto;
-    flex-basis: auto;
     margin: 0 auto;
   }
 
-  .about__content {
-    width: 100%;
-  }
-
-  .about__footer {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 2rem;
+  .about-heading {
+    text-align: center;
+    margin: 0 0 1.5rem 0;
   }
 
   .desktop-only {
