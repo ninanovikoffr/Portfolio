@@ -103,7 +103,13 @@ function Hero() {
 
         <div className="hero__role">
           <h2>UX/UI Designer</h2>
-          <p>criatividade · soluções · design</p>
+          <p>
+            <span>criatividade</span>
+            <span>·</span>
+            <span>soluções</span>
+            <span>·</span>
+            <span>design</span>
+          </p>
         </div>
 
         <p className="hero__description">
