@@ -1,4 +1,4 @@
-import { StrictMode } from 'react'
+import { StrictMode, useState, useEffect } from 'react'
 import { createRoot } from 'react-dom/client'
 import './styles.css'
 
@@ -51,8 +51,26 @@ const tools = [
 ]
 
 function Header() {
+  const [isSticky, setIsSticky] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const projetosSection = document.getElementById('projetos');
+      if (projetosSection) {
+        if (window.scrollY >= projetosSection.offsetTop - 70) {
+          setIsSticky(true);
+        } else {
+          setIsSticky(false);
+        }
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
-    <header className="site-header">
+    <header className={`site-header ${isSticky ? 'site-header--sticky' : ''}`}>
       <nav
         className="container navigation"
         aria-label="Navegação principal"
@@ -165,7 +183,7 @@ function FeaturedProjects() {
         src={asset('corrente.svg')}
         alt=""
       />
-      
+
       <div className="container">
         <h2 className="section-heading">
           Projetos em destaque
@@ -223,7 +241,7 @@ function Skills() {
   return (
     <section className="section skills-section">
       <div className="container skills-layout">
-        
+
         {/* Coluna 1: Ferramentas */}
         <div className="skills-column">
           <h2 className="subsection-heading">Ferramentas</h2>
@@ -278,7 +296,7 @@ function About() {
             <h2 className="section-heading about-heading">
               SOBRE MIM
             </h2>
-            
+
             <p>
               Sou estudante do 6º período de Ciência da Computação na
               Universidade Federal de Lavras (UFLA) e gosto de explorar a

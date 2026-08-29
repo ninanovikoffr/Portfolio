@@ -109,6 +109,35 @@ a {
 }
 
 /* =========================
+   HEADER STICKY
+========================= */
+
+.site-header--sticky {
+  position: fixed;
+  top: -70px; 
+  left: 0;
+  width: 100%;
+  background: rgba(35, 35, 35, 0.95); 
+  backdrop-filter: blur(8px);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
+  z-index: 1000;
+  animation: slideDownNav 0.4s cubic-bezier(0.25, 0.8, 0.25, 1) forwards;
+}
+
+.site-header--sticky::before {
+  display: none;
+}
+
+@keyframes slideDownNav {
+  from {
+    top: -70px;
+  }
+  to {
+    top: 0;
+  }
+}
+
+/* =========================
    HERO
 ========================= */
 
@@ -502,7 +531,7 @@ a {
 .skills-section {
   position: relative;
   padding-top: 6rem;
-  padding-bottom: 10rem; /* Espaço para não invadir o sobre mim */
+  padding-bottom: 10rem; 
   z-index: 1; 
 }
 
@@ -636,7 +665,7 @@ a {
   text-align: left;
   text-transform: uppercase;
   letter-spacing: 1px;
-  margin: -1.5rem 0 1.5rem 0; /* Puxado levemente para cima */
+  margin: -1.5rem 0 1.5rem 0; 
 }
 
 .about__content p {
@@ -772,7 +801,7 @@ a {
     right: 0;
     transform: translateX(65%);
   }
-  
+
   .projects-section__chain {
     width: 250vw; 
     height: auto;
@@ -792,11 +821,11 @@ a {
   .featured-project__image {
     margin-top: 1.2rem;
   }
-  
+
   .featured-project h3 {
     font-size: clamp(1.6rem, 7vw, 2.2rem);
   }
-  
+
   .featured-project p {
     font-size: 1.1rem;
   }
@@ -838,7 +867,7 @@ a {
     flex-direction: column; 
     gap: 4rem;
   }
-  
+
   .subsection-heading {
     font-size: clamp(1.8rem, 7vw, 2.5rem);
   }
@@ -885,7 +914,7 @@ a {
 
   .about-heading {
     text-align: center;
-    margin: 0 0 1.5rem 0; /* Reseta o ajuste de desktop no mobile para centralizar bonito */
+    margin: 0 0 1.5rem 0; 
   }
 
   .about__image {
