@@ -40,14 +40,14 @@ const otherProjects = [
 ]
 
 const tools = [
-  'figma.svg',
-  'vscode.svg',
-  'git.svg',
-  'c++.svg',
-  'react.svg',
-  'github.svg',
-  'python.svg',
-  'blendericone.png',
+  { file: 'figma.svg', url: 'https://www.figma.com/' },
+  { file: 'vscode.svg', url: 'https://code.visualstudio.com/' },
+  { file: 'git.svg', url: 'https://git-scm.com/' },
+  { file: 'c++.svg', url: 'https://isocpp.org/' },
+  { file: 'react.svg', url: 'https://react.dev/' },
+  { file: 'github.svg', url: 'https://github.com/' },
+  { file: 'python.svg', url: 'https://www.python.org/' },
+  { file: 'blendericone.png', url: 'https://www.blender.org/' },
 ]
 
 function Header() {
@@ -253,11 +253,16 @@ function Skills() {
           <h2 className="subsection-heading">Ferramentas</h2>
           <div className="tools-list">
             {tools.map((tool) => (
-              <img
-                key={tool}
-                src={asset(tool)}
-                alt=""
-              />
+              <a 
+                key={tool.file} 
+                href={tool.url} 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                style={{ display: 'contents' }}
+                aria-label={`Site oficial ${tool.file.split('.')[0]}`}
+              >
+                <img src={asset(tool.file)} alt="" />
+              </a>
             ))}
           </div>
         </div>
@@ -266,12 +271,22 @@ function Skills() {
         <div className="skills-column">
           <h2 className="subsection-heading">Além do design</h2>
           <div className="beyond-design-list">
-            <a className="additional-project" href="#contato">
+            <a 
+              className="additional-project" 
+              href="https://github.com/ninanovikoffr/Compiladores"
+              target="_blank" 
+              rel="noopener noreferrer"
+            >
               <img src={asset('dicoroxo.png')} alt="" />
               <span>Compilador de Mini-linguagem em C</span>
             </a>
 
-            <a className="additional-project" href="#contato">
+            <a 
+              className="additional-project" 
+              href="https://github.com/ninanovikoffr/Projeto_Grafos"
+              target="_blank" 
+              rel="noopener noreferrer"
+            >
               <img src={asset('dicoroxo.png')} alt="" />
               <span>Projeto de Algoritmos em Grafos em Python</span>
             </a>
@@ -298,7 +313,6 @@ function About() {
           />
 
           <div className="about__content">
-            {/* Título movido para dentro da área de texto */}
             <h2 className="section-heading about-heading">
               SOBRE MIM
             </h2>
@@ -328,7 +342,12 @@ function About() {
                 <a href="#sobre" aria-label="E-mail">
                   <img className="social-icon-email" src={asset('emailicone.svg')} alt="" />
                 </a>
-                <a href="#sobre" aria-label="LinkedIn">
+                <a 
+                  href="https://www.linkedin.com/in/nina-novikoff109" 
+                  aria-label="LinkedIn"
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                >
                   <img className="social-icon-linkedin" src={asset('linkedin.svg')} alt="" />
                 </a>
               </div>
