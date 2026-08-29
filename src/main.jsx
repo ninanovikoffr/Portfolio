@@ -1,6 +1,7 @@
 import { StrictMode, useState, useEffect } from 'react'
 import { createRoot } from 'react-dom/client'
 import './styles.css'
+import CardAnimado from './CardAnimado'
 
 const asset = (file) => `/assets/${file}`
 
@@ -223,19 +224,10 @@ function OtherProjects() {
 
         <div className="other-projects">
           {otherProjects.map((project) => (
-            <article
-              className="project-card"
+            <CardAnimado
               key={project.title}
-            >
-              <img
-                src={asset(project.image)}
-                alt={`Projeto ${project.title}`}
-              />
-
-              <h3>{project.title}</h3>
-
-              <p>{project.description}</p>
-            </article>
+              project={project}
+            />
           ))}
         </div>
       </div>
@@ -248,7 +240,6 @@ function Skills() {
     <section className="section skills-section">
       <div className="container skills-layout">
 
-        {/* Coluna 1: Ferramentas */}
         <div className="skills-column">
           <h2 className="subsection-heading">Ferramentas</h2>
           <div className="tools-list">
@@ -267,7 +258,6 @@ function Skills() {
           </div>
         </div>
 
-        {/* Coluna 2: Além do Design */}
         <div className="skills-column">
           <h2 className="subsection-heading">Além do design</h2>
           <div className="beyond-design-list">
