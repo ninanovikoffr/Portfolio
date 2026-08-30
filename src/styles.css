@@ -18,19 +18,19 @@
 
 html {
   scroll-behavior: smooth;
-  overflow-x: hidden; /* Trava qualquer scroll horizontal na raiz */
+  overflow-x: hidden;
 }
 
 body {
   margin: 0;
   min-width: 300px;
-  overflow-x: hidden; /* Trava qualquer scroll horizontal na raiz */
+  overflow-x: hidden;
   background: var(--background);
   width: 100%;
 }
 
 main {
-  padding-top: 70px; /* Compensa a altura do header absolute para não encavalar */
+  padding-top: 70px;
 }
 
 img {
@@ -63,7 +63,7 @@ a {
 ========================= */
 
 .site-header {
-  position: absolute; /* Retirado do fluxo da página para não quebrar o cálculo do Scroll */
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
@@ -122,7 +122,7 @@ a {
 ========================= */
 
 .site-header--sticky {
-  position: fixed; /* Troca de absolute para fixed sem dar pulos na tela */
+  position: fixed;
   top: -70px; 
   left: 0;
   width: 100%;
@@ -157,11 +157,11 @@ a {
 .hero__content {
   --hero-gutter: clamp(1.25rem, 10vw, 10rem);
   position: relative;
-  width: 100%; /* Corrigido de 100vw para evitar barra de rolagem */
+  width: 100%;
   max-width: 100%;
   height: auto;
   min-height: 420px;
-  margin-left: 0; /* Centralização automática pelo container */
+  margin-left: 0;
   padding-inline: var(--hero-gutter);
   overflow: visible;
 }
@@ -486,10 +486,11 @@ a {
   position: relative;
   z-index: 1;
   width: 372px;
-  height: 541px;
+  min-height: 480px;
+  height: auto;
   border-radius: 17px;
   background: #232323;
-  padding: 20px 18px 50px 18px;
+  padding: 20px 18px 25px 18px; 
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -525,6 +526,7 @@ a {
 
 .project-card p {
   margin: 0;
+  padding: 0 10px;
   color: #FFF;
   text-align: justify;
   font-family: 'Jost', sans-serif;
