@@ -49,6 +49,11 @@ export default function CardAnimado({ project }) {
     <animated.div
       ref={domTarget}
       className="project-card"
+      onClick={() => {
+        if (project.link) {
+          window.location.href = project.link;
+        }
+      }}
       style={{
         transform: 'perspective(600px)',
         scale,
@@ -57,14 +62,14 @@ export default function CardAnimado({ project }) {
         position: 'relative',
         transformStyle: 'preserve-3d',
         willChange: 'transform',
-        touchAction: 'none', 
+        touchAction: 'none',
+        cursor: 'pointer', 
       }}>
       
       <img src={asset(project.image)} alt={`Projeto ${project.title}`} />
       <h3>{project.title}</h3>
       <p>{project.description}</p>
       
-      {/* 1. Camada da luz base (feixe de luz linear suave) */}
       <animated.div
         style={{
           position: 'absolute',
@@ -76,7 +81,6 @@ export default function CardAnimado({ project }) {
           pointerEvents: 'none',
           zIndex: 9,
           opacity: to([opacity], (o) => o * 0.7),
-          // Feixe em linha acompanhando o mouse
           background: 'linear-gradient(105deg, transparent 35%, rgba(138, 43, 226, 0.08) 45%, rgba(0, 255, 255, 0.05) 55%, transparent 65%)',
           backgroundSize: '250% 250%',
           backgroundPosition: to([shineX, shineY], (x, y) => `${100 - x}% ${100 - y}%`),
@@ -84,7 +88,6 @@ export default function CardAnimado({ project }) {
         }}
       />
       
-      {/* 2. Camada do Glitter Redondo (Suavizado) */}
       <animated.div
         style={{
           position: 'absolute',
@@ -96,7 +99,6 @@ export default function CardAnimado({ project }) {
           pointerEvents: 'none',
           zIndex: 10,
           opacity: to([opacity], (o) => o * 0.9), 
-          // Partículas com intensidade bem mais baixa (0.2 a 0.4 de opacidade)
           background: `
             radial-gradient(circle at 15% 15%, rgba(0, 255, 255, 0.3) 1px, transparent 1.5px),
             radial-gradient(circle at 45% 65%, rgba(170, 0, 255, 0.4) 1.5px, transparent 2px),
@@ -105,9 +107,6 @@ export default function CardAnimado({ project }) {
           `,
           backgroundSize: '12px 12px, 18px 18px, 15px 15px, 22px 22px',
           mixBlendMode: 'color-dodge',
-          
-          // A máscara agora é uma faixa (linear-gradient) em vez de um círculo
-          // Revela os brilhos a 100% (black) no meio da faixa, e suaviza (transparent) nas pontas
           WebkitMaskImage: 'linear-gradient(105deg, transparent 35%, black 50%, transparent 65%)',
           WebkitMaskSize: '250% 250%',
           WebkitMaskPosition: to([shineX, shineY], (x, y) => `${100 - x}% ${100 - y}%`),
