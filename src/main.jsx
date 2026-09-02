@@ -1,4 +1,4 @@
-import { StrictMode, useState, useEffect } from 'react'
+import { StrictMode, useState, useEffect, useRef } from 'react'
 import { createRoot } from 'react-dom/client'
 import './styles.css'
 import CardAnimado from './CardAnimado'
@@ -153,8 +153,33 @@ function ActionButton({ children }) {
 }
 
 function FeaturedProject({ project }) {
+  const [isVisible, setIsVisible] = useState(false);
+  const domRef = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        // Dispara quando o card está próximo (50px), garantindo que a animação rápida seja vista acontecendo
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.1, rootMargin: '0px 0px 50px 0px' } 
+    );
+
+    if (domRef.current) {
+      observer.observe(domRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <article className="featured-project">
+    <article 
+      ref={domRef}
+      className={`featured-project ${isVisible ? 'is-visible' : ''}`}
+    >
       <div className="featured-project__content">
         <h3>{project.title}</h3>
 
