@@ -79,10 +79,10 @@ a {
   height: 237px;
   width: min(1080px, 90vw);
   pointer-events: none;
-  background: url('/assets/blurcima.svg') right center / contain no-repeat;
-  filter: blur(10.449999809265137px);
+  background: url('/assets/blurcima.svg') right top / contain no-repeat;
+  filter: blur(15px);
   opacity: 1;
-  z-index: 0;
+  z-index: -1; 
 }
 
 .navigation {
@@ -91,6 +91,7 @@ a {
   justify-content: center;
   align-items: center;
   height: 100%;
+  z-index: 10; 
 }
 
 .navigation__logo {
@@ -349,14 +350,12 @@ a {
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4); 
   z-index: 2;
   
-  /* Animação PREMIUM Estilo Holográfico: 3D com rotação, escala e efeito bounce super rápido */
   transform-style: preserve-3d;
   transform: perspective(1200px) translateY(120px) rotateX(12deg) rotateY(-3deg) scale(0.95);
   transition: transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
   will-change: transform;
 }
 
-/* Classe ativada via JavaScript */
 .featured-project.is-visible {
   transform: perspective(1200px) translateY(0) rotateX(0deg) rotateY(0deg) scale(1);
 }
@@ -854,8 +853,9 @@ a {
   }
 
   .hero {
-    min-height: 480px;
+    min-height: auto;
     padding-top: 3.5rem;
+    padding-bottom: 2rem;
     overflow: visible;
   }
 
@@ -864,48 +864,69 @@ a {
     width: 100%;         
     margin-left: 0;      
     height: auto;
-    max-height: none;
-    min-height: 400px;
+    min-height: auto;
     padding-inline: var(--hero-gutter);
-    overflow: visible;
+    
+    display: flex;
+    flex-direction: column;
+    position: relative;
   }
 
   .hero__name h1 {
     margin-left: 0;
   }
 
+  .hero__name, 
+  .hero__role, 
+  .hero__description {
+    position: relative;
+    top: auto;
+    left: auto;
+    right: auto;
+    bottom: auto;
+    transform: none;
+    z-index: 2;
+  }
+
   .hero__role {
-    top: 155px; 
-    right: var(--hero-gutter);
+    align-self: flex-end;
+    margin-top: 1.5rem;
+    max-width: 100%;
   }
 
   .hero__description {
-    top: 270px; 
-    left: var(--hero-gutter);
+    margin-top: 3rem;
     max-width: 95%;
   }
 
   .hero__decoration--loop {
-    width: 210px;
-    height: 100px;
-    top: 62px;
-    left: 62px;
+    width: 260px;
+    height: auto;
+    top: 5px;
+    left: -20px;
+    transform: none;
   }
 
   .hero__decoration--shine {
-    width: 500px;
-    height: 775px;
-    top: 205px;
-    left: 0;
-    transform: translateX(-40%);
+    width: 150vw;
+    height: auto;
+    top: 25%;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0.9;
   }
 
   .hero__decoration--star {
-    width: 856px;
-    height: 841px;
-    top: 270px;
-    right: 0;
-    transform: translateX(65%);
+    width: 180vw;
+    height: auto;
+    top: 35%;
+    right: -40%;
+    transform: none;
+    opacity: 0.8;
+  }
+
+  .projects-section {
+    margin-top: 60px;
   }
 
   .projects-section__chain {
@@ -1026,11 +1047,14 @@ a {
     display: none;
   }
 
+  /* AJUSTE PARA O BRILHO NO CELULAR */
   .site-header::before {
-    top: -20px;
-    right: 0;
-    left: auto;
-    width: 100%;
-    background-position: right center;
+    top: -10px;
+    right: auto;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 150vw; 
+    height: 120px; 
+    background: url('/assets/blurcima.svg') center top / 100% 100% no-repeat;
   }
 }
