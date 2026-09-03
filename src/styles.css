@@ -702,6 +702,8 @@ a {
 }
 
 .about__footer {
+  position: relative;
+  z-index: 3; /* Garante que os botões fiquem acima de qualquer camada de blur */
   display: flex;
   align-items: center; 
   justify-content: space-between;
@@ -969,9 +971,10 @@ a {
   }
 
   .project-card {
-    width: 100%;
+    width: 88%; 
+    max-width: 340px; 
     height: auto;
-    padding: 2rem 1.5rem;
+    padding: 2rem 1.2rem;
   }
 
   .project-card img,
@@ -1027,9 +1030,20 @@ a {
     padding-bottom: 3rem; 
   }
 
+  /* CORREÇÃO DO RODAPÉ (SOBRE MIM) NO MOBILE PARA EXIBIR O BOTÃO E OS ÍCONES */
   .about-section {
     padding-top: 1rem;
-    padding-bottom: 3.5rem;
+    padding-bottom: 5rem;
+  }
+
+  /* Reduz o tamanho e posiciona o blur do rodapé para não cobrir os botões */
+  .about-section::before {
+    width: 100%;
+    height: 300px;
+    bottom: 0;
+    right: 0;
+    filter: blur(30px);
+    opacity: 0.7;
   }
 
   .about__image {
@@ -1043,11 +1057,32 @@ a {
     margin: 0 0 1.5rem 0;
   }
 
+  .about__footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 2.5rem;
+    width: 100%;
+  }
+
+  .about-button {
+    width: 100%;
+    max-width: 260px;
+  }
+
+  .about__socials {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+  }
+
   .desktop-only {
     display: none;
   }
 
-  /* AJUSTE PARA O BRILHO NO CELULAR */
   .site-header::before {
     top: -10px;
     right: auto;
