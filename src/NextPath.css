@@ -94,7 +94,7 @@
   max-width: 1280px;
   margin: 0 auto;
   display: flex;
-  align-items: flex-start;
+  align-items: flex-end;
   gap: clamp(2rem, 4.44vw, 64px);
 }
 
@@ -163,6 +163,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
+  align-items: center;
 }
 
 .np-tag {
@@ -181,7 +182,7 @@
 .np-hero-image-wrap {
   flex: 1 1 auto;
   display: flex;
-  align-items: flex-start;
+  align-items: flex-end;
   justify-content: flex-end;
   min-width: 0;
   padding-top: 0;
@@ -432,7 +433,7 @@
   padding-top: 16px;
 }
 
-/* ── BANNER ── */
+/* ── BANNER (Largura exata alinhada ao conteúdo principal da seção) ── */
 .np-banner {
   position: relative;
   width: 100%;
@@ -440,32 +441,30 @@
   margin: clamp(2rem, 4.44vw, 64px) auto 0;
   border-radius: 11px;
   overflow: hidden;
-  min-height: 200px;
+  background: transparent;
 }
 
 .np-banner-bg {
-  position: absolute;
-  inset: 0;
-  background-color: #bab1e8;
-  border-radius: 11px;
-  background-image: radial-gradient(
-    ellipse at 77% 29%,
-    rgba(120, 120, 120, 1) 0%,
-    rgba(60, 60, 60, 1) 40%,
-    rgba(15, 15, 15, 1) 80%,
-    rgba(0, 0, 0, 1) 100%
-  );
+  display: none;
 }
 
 .np-banner-screens {
   position: relative;
   z-index: 1;
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   justify-content: center;
-  gap: clamp(8px, 1.11vw, 16px);
-  padding: clamp(1.5rem, 2.78vw, 40px) clamp(1rem, 1.67vw, 24px) 0;
+  padding: 0;
+  width: 100%;
   overflow: hidden;
+}
+
+.np-banner-screens img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 11px;
+  object-fit: contain;
 }
 
 /* ── PROCESSO ── */

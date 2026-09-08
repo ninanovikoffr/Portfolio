@@ -70,9 +70,21 @@ export default function NextPath() {
 
   const handleNavClick = (e, path) => {
     e.preventDefault();
-    window.history.pushState({}, '', path);
-    window.dispatchEvent(new PopStateEvent('popstate'));
-    window.scrollTo(0, 0);
+    if (path.startsWith('/#')) {
+      const targetId = path.replace('/#', '');
+      window.history.pushState({}, '', '/');
+      window.dispatchEvent(new PopStateEvent('popstate'));
+      setTimeout(() => {
+        const el = document.getElementById(targetId);
+        if (el) {
+          el.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 50);
+    } else {
+      window.history.pushState({}, '', path);
+      window.dispatchEvent(new PopStateEvent('popstate'));
+      window.scrollTo(0, 0);
+    }
   };
 
   return (
@@ -86,7 +98,7 @@ export default function NextPath() {
           <nav className="np-nav">
             <a className="np-nav-link" href="/" onClick={(e) => handleNavClick(e, '/')}>Início</a>
             <a className="np-nav-link" href="/#projetos" onClick={(e) => handleNavClick(e, '/#projetos')}>Portfolio</a>
-            <a className="np-nav-link" href="/#contato" onClick={(e) => handleNavClick(e, '/#contato')}>Contato</a>
+            <a className="np-nav-link" href="/#sobre" onClick={(e) => handleNavClick(e, '/#sobre')}>Contato</a>
           </nav>
         </div>
       </header>
@@ -274,7 +286,7 @@ export default function NextPath() {
         <div className="np-banner">
           <div className="np-banner-bg" />
           <div className="np-banner-screens" style={{ paddingBottom: '20px' }}>
-            <img src={asset('nextpathresultado.png')} alt="Resultado NextPath" style={{ width: '100%', maxWidth: '900px', borderRadius: '8px', objectFit: 'contain' }} />
+            <img src={asset('nextpathresultado.png')} alt="Resultado NextPath" style={{ width: '100%', borderRadius: '8px', objectFit: 'contain' }} />
           </div>
         </div>
       </section>
@@ -346,8 +358,11 @@ export default function NextPath() {
             </p>
             <p className="np-processo-note">Primeiro protótipo de alta fidelidade feito no figma</p>
 
-            <div className="np-hifi-screens" style={{ justifyContent: 'center' }}>
-              <img src={asset('prototipo1.png')} alt="Primeiro protótipo" style={{ width: '100%', maxWidth: '600px', borderRadius: '8px', objectFit: 'contain' }} />
+            {/* Imagem do Primeiro Protótipo ajustada para utilizar o mesmo padrão .np-banner */}
+            <div className="np-banner" style={{ marginTop: '24px' }}>
+              <div className="np-banner-screens" style={{ paddingBottom: '0' }}>
+                <img src={asset('prototipo1.png')} alt="Primeiro protótipo" style={{ width: '100%', borderRadius: '8px', objectFit: 'contain' }} />
+              </div>
             </div>
           </div>
 
