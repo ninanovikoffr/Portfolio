@@ -438,9 +438,10 @@ function About() {
               </a>
 
               <div className="about__socials" id="contato">
-                {/* Correção aplicada aqui no href do e-mail */}
                 <a 
-                  href="mailto:ninanovikoffr@gmail.com?subject=Contato%20via%20Portf%C3%B3lio" 
+                  href="https://mail.google.com/mail/?view=cm&fs=1&to=ninanovikoffr@gmail.com&su=Contato%20via%20Portf%C3%B3lio" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
                   aria-label="E-mail"
                 >
                   <img className="social-icon-email" src={asset('emailicone.svg')} alt="" />
