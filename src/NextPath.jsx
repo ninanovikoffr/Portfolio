@@ -330,15 +330,18 @@ export default function NextPath() {
               Protótipos de baixa fidelidade, desenhados à mão e identidade visual do app
             </p>
             
-            <img src={asset('baixafidelidade.png')} className="np-sketch-image" alt="Protótipo de baixa fidelidade" style={{ marginBottom: '24px', objectFit: 'cover' }} />
-
-            <div className="np-palette-row">
-              <div className="np-identity-block">
-                <img src={asset('nextpathlogo.png')} alt="NextPath Logo" style={{ height: '42px', objectFit: 'contain' }} />
+            <div className="np-baixa-fid-container">
+              <div className="np-baixa-fid-image">
+                <img src={asset('baixafidelidade.png')} alt="Protótipo de baixa fidelidade" />
               </div>
-              <div className="np-color-swatches" style={{ gap: '8px' }}>
-                <img src={asset('paletacores1.png')} alt="Paleta de cores 1" style={{ height: '50px', objectFit: 'contain' }} />
-                <img src={asset('paletacores2.png')} alt="Paleta de cores 2" style={{ height: '50px', objectFit: 'contain' }} />
+              <div className="np-baixa-fid-sidebar">
+                <div className="np-identity-block">
+                  <img src={asset('nextpathlogo.png')} alt="NextPath Logo" />
+                </div>
+                <div className="np-color-swatches" style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                  <img src={asset('paletacores1.png')} alt="Paleta de cores 1" />
+                  <img src={asset('paletacores2.png')} alt="Paleta de cores 2" />
+                </div>
               </div>
             </div>
           </div>
@@ -358,7 +361,6 @@ export default function NextPath() {
             </p>
             <p className="np-processo-note">Primeiro protótipo de alta fidelidade feito no figma</p>
 
-            {/* Imagem do Primeiro Protótipo ajustada para utilizar o mesmo padrão .np-banner */}
             <div className="np-banner" style={{ marginTop: '24px' }}>
               <div className="np-banner-screens" style={{ paddingBottom: '0' }}>
                 <img src={asset('prototipo1.png')} alt="Primeiro protótipo" style={{ width: '100%', borderRadius: '8px', objectFit: 'contain' }} />
@@ -402,54 +404,62 @@ export default function NextPath() {
               termos profissionais.
             </p>
 
-            <div className="np-before-after-header">
-              <span className="np-ba-label">Antes</span>
-              <span className="np-ba-label np-ba-label--right">depois</span>
-            </div>
-            <div className="np-before-after-grid">
-              <div className="np-ba-col">
-                <div className="np-ba-card">
-                  <img src={asset('antes1.png')} className="np-ba-image" alt="Tela inicial antes" style={{ objectFit: 'cover' }} />
-                  <p className="np-ba-text">
+            <div className="np-redesign-rows">
+              <div className="np-redesign-row">
+                <div className="np-redesign-card">
+                  <div className="np-redesign-img-wrap">
+                    <img src={asset('antes1.png')} className="np-redesign-img" alt="Tela inicial antes" />
+                  </div>
+                  <p className="np-redesign-text">
                     O percentual aparecia em destaque, mas não deixava claro o que o número
                     representava ou quais fatores justificavam aquela recomendação. As tags de
                     habilidades também tinham bastante destaque visual e podiam ser confundidas
                     com botões.
                   </p>
                 </div>
-                <div className="np-ba-arrow">
+
+                <div className="np-redesign-arrow-col">
                   <svg viewBox="0 0 27 21" fill="none" width="27" height="21">
                     <path d={svgPaths.arrow} fill="white" />
                   </svg>
                 </div>
-                <div className="np-ba-card">
-                  <img src={asset('antes2.png')} className="np-ba-image" alt="Tela detalhes vaga antes" style={{ objectFit: 'cover' }} />
-                  <p className="np-ba-text">
-                    Na tela de detalhes, a compatibilidade aparecia sem explicar os critérios
-                    considerados. Termos como CLT também eram apresentados sem apoio adicional,
-                    e as tags continuavam com aparência semelhante à de elementos interativos.
-                  </p>
-                </div>
-              </div>
 
-              <div className="np-ba-col">
-                <div className="np-ba-card">
-                  <img src={asset('depois1.png')} className="np-ba-image" alt="Tela inicial depois" style={{ objectFit: 'cover' }} />
-                  <p className="np-ba-text">
+                <div className="np-redesign-card">
+                  <div className="np-redesign-img-wrap">
+                    <img src={asset('depois1.png')} className="np-redesign-img" alt="Tela inicial depois" />
+                  </div>
+                  <p className="np-redesign-text">
                     O score passou a ser identificado como "compatibilidade" e ganhou a opção
                     "Por quê?", que apresenta os principais fatores relacionados à recomendação.
                     As tags também foram suavizadas visualmente para reforçar seu caráter
                     informativo.
                   </p>
                 </div>
-                <div className="np-ba-arrow">
+              </div>
+
+              <div className="np-redesign-row">
+                <div className="np-redesign-card">
+                  <div className="np-redesign-img-wrap">
+                    <img src={asset('antes2.png')} className="np-redesign-img" alt="Tela detalhes vaga antes" />
+                  </div>
+                  <p className="np-redesign-text">
+                    Na tela de detalhes, a compatibilidade aparecia sem explicar os critérios
+                    considerados. Termos como CLT também eram apresentados sem apoio adicional,
+                    e as tags continuavam com aparência semelhante à de elementos interativos.
+                  </p>
+                </div>
+
+                <div className="np-redesign-arrow-col">
                   <svg viewBox="0 0 27 21" fill="none" width="27" height="21">
                     <path d={svgPaths.arrow} fill="white" />
                   </svg>
                 </div>
-                <div className="np-ba-card">
-                  <img src={asset('depois2.png')} className="np-ba-image" alt="Tela detalhes vaga depois" style={{ objectFit: 'cover' }} />
-                  <p className="np-ba-text">
+
+                <div className="np-redesign-card">
+                  <div className="np-redesign-img-wrap">
+                    <img src={asset('depois2.png')} className="np-redesign-img" alt="Tela detalhes vaga depois" />
+                  </div>
+                  <p className="np-redesign-text">
                     Foi incluído o link "Entenda por quê" para detalhar a compatibilidade e um
                     ícone de ajuda ao lado de "CLT" para explicar o termo quando necessário. As
                     tags também perderam destaque visual para ficarem mais claramente associadas
@@ -459,7 +469,7 @@ export default function NextPath() {
               </div>
             </div>
 
-            <p className="np-processo-text" style={{ marginTop: '24px' }}>
+            <p className="np-processo-text" style={{ marginTop: '32px' }}>
               Além das alterações diretamente relacionadas aos achados dos testes, aproveitei o
               redesign para melhorar o feedback de algumas ações importantes. Foram adicionados
               estados visuais e mensagens de confirmação para indicar de forma mais clara quando
@@ -469,9 +479,9 @@ export default function NextPath() {
             <div className="np-confirmacao-card">
               <p className="np-confirmacao-label">Mensagens de confirmação — decisão de design</p>
               <div className="np-confirmacao-images">
-                <img src={asset('popup1.png')} className="np-confirmacao-img" alt="Confirmação 1" style={{ objectFit: 'cover' }} />
-                <img src={asset('popup2.png')} className="np-confirmacao-img" alt="Confirmação 2" style={{ objectFit: 'cover' }} />
-                <img src={asset('popup3.png')} className="np-confirmacao-img" alt="Confirmação 3" style={{ objectFit: 'cover' }} />
+                <img src={asset('popup1.png')} className="np-confirmacao-img" alt="Confirmação 1" />
+                <img src={asset('popup2.png')} className="np-confirmacao-img" alt="Confirmação 2" />
+                <img src={asset('popup3.png')} className="np-confirmacao-img" alt="Confirmação 3" />
               </div>
             </div>
 

@@ -433,7 +433,7 @@
   padding-top: 16px;
 }
 
-/* ── BANNER (Largura exata alinhada ao conteúdo principal da seção) ── */
+/* ── BANNER ── */
 .np-banner {
   position: relative;
   width: 100%;
@@ -550,97 +550,108 @@
   padding-top: 12px;
 }
 
-/* ── SKETCH IMAGE ── */
-.np-sketch-image {
+/* ── PROTÓTIPO DE BAIXA FIDELIDADE (Lado a Lado Responsivo) ── */
+.np-baixa-fid-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  margin-top: 24px;
+  flex-wrap: wrap;
+}
+
+.np-baixa-fid-image {
+  flex: 1 1 650px;
+  min-width: 0;
+}
+
+.np-baixa-fid-image img {
   width: 100%;
-  max-width: 921px;
-  border-radius: 4px;
+  height: auto;
+  border-radius: 8px;
+  object-fit: contain;
 }
 
-/* ── PALETTE ── */
-.np-palette-row {
-  display: flex;
-  align-items: center;
-  gap: 24px;
-  flex-wrap: wrap;
-  padding-top: 16px;
-}
-
-.np-identity-block {
-  display: flex;
-  align-items: center;
-}
-
-/* ── HIFI SCREENS ── */
-.np-hifi-screens {
-  display: flex;
-  align-items: flex-end;
-  gap: 24px;
-  padding-top: 24px;
-  flex-wrap: wrap;
-}
-
-/* ── BEFORE / AFTER ── */
-.np-before-after-header {
-  display: flex;
-  justify-content: space-around;
-  padding-top: 24px;
-  padding-bottom: 8px;
-}
-
-.np-ba-label {
-  font-family: "Julius Sans One", sans-serif;
-  font-size: clamp(18px, 1.67vw, 24px);
-  color: #ffffff;
-  font-weight: 400;
-}
-
-.np-before-after-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 24px;
-}
-
-.np-ba-col {
+.np-baixa-fid-sidebar {
+  flex: 0 0 auto;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 32px;
+  align-items: flex-start;
 }
 
-.np-ba-card {
+.np-baixa-fid-sidebar .np-identity-block img {
+  height: 55px;
+  object-fit: contain;
+}
+
+.np-baixa-fid-sidebar .np-color-swatches img {
+  height: 60px;
+  object-fit: contain;
+}
+
+/* ── REDESIGN (Antes 1 -> Depois 1 / Antes 2 -> Depois 2) ── */
+.np-redesign-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  margin-top: 32px;
+}
+
+.np-redesign-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.np-redesign-card {
   background-color: #232323;
   border-radius: 20px;
-  padding: 16px;
+  padding: 24px;
   display: flex;
-  flex-direction: column;
-  gap: 12px;
+  align-items: center;
+  gap: 24px;
+  flex: 1;
+  min-width: 0;
 }
 
-.np-ba-image {
+.np-redesign-img-wrap {
+  flex: 0 0 240px;
+  max-width: 240px;
+}
+
+.np-redesign-img {
   width: 100%;
-  aspect-ratio: 265 / 185;
-  border-radius: 4px;
+  height: auto;
+  border-radius: 8px;
+  object-fit: cover;
+  display: block;
 }
 
-.np-ba-text {
+.np-redesign-text {
   font-family: "Jost", sans-serif;
   font-weight: 300;
-  font-size: clamp(13px, 1.11vw, 16px);
-  line-height: 1.35;
+  font-size: clamp(14px, 1.15vw, 17px);
+  line-height: 1.5;
   color: #ffffff;
+  flex: 1;
 }
 
-.np-ba-arrow {
+.np-redesign-arrow-col {
   display: flex;
+  align-items: center;
   justify-content: center;
+  padding: 0 12px;
   opacity: 0.6;
+  flex-shrink: 0;
 }
 
-/* ── CONFIRMAÇÃO ── */
+/* ── CONFIRMAÇÃO (Fundo cinza unificado, sem caixas individuais cortadas) ── */
 .np-confirmacao-card {
   background-color: #232323;
   border-radius: 20px;
-  padding: clamp(12px, 2.22vw, 32px);
+  padding: clamp(24px, 2.22vw, 40px);
   margin-top: 32px;
   margin-bottom: 24px;
 }
@@ -651,20 +662,24 @@
   font-size: 13px;
   line-height: 19.5px;
   color: rgba(255, 255, 255, 0.4);
-  padding-bottom: 12px;
+  padding-bottom: 20px;
 }
 
 .np-confirmacao-images {
   display: flex;
-  align-items: stretch;
+  align-items: center;
+  justify-content: center;
   gap: 24px;
-  height: clamp(120px, 13.19vw, 190px);
+  flex-wrap: wrap;
 }
 
 .np-confirmacao-img {
-  flex: 1;
-  height: 100%;
-  border-radius: 4px;
+  width: 100%;
+  max-width: 280px;
+  height: auto;
+  border-radius: 12px;
+  object-fit: contain;
+  display: block;
 }
 
 /* ── LEARNINGS ── */
@@ -787,6 +802,27 @@
 }
 
 /* ── RESPONSIVE ── */
+@media (max-width: 1024px) {
+  .np-baixa-fid-container {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .np-baixa-fid-sidebar {
+    align-items: center;
+    width: 100%;
+  }
+
+  .np-redesign-row {
+    flex-direction: column;
+  }
+  
+  .np-redesign-arrow-col {
+    transform: rotate(90deg);
+    padding: 12px 0;
+  }
+}
+
 @media (max-width: 900px) {
   .np-hero-inner {
     flex-direction: column;
@@ -809,15 +845,6 @@
     border-left: none;
     border-top: 0.8px solid rgba(255, 255, 255, 0.1);
     padding-top: 32px;
-  }
-
-  .np-before-after-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .np-before-after-header {
-    justify-content: space-between;
-    padding-left: 0;
   }
 
   .np-contexto-grid {
@@ -864,13 +891,23 @@
   }
 
   .np-confirmacao-img {
-    height: clamp(80px, 30vw, 160px);
-    width: 100%;
+    max-width: 100%;
   }
 
   .np-learning-item {
     flex-direction: column;
     gap: 1rem;
     padding: 28px 0;
+  }
+
+  .np-redesign-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .np-redesign-img-wrap {
+    flex: 1;
+    max-width: 100%;
+    width: 100%;
   }
 }
