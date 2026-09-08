@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import "./NextPath.css";
 
 const asset = (file) => `/assets/${file}`;
@@ -52,18 +53,40 @@ function LearningItem({ number, title, text }) {
 }
 
 export default function NextPath() {
+  const [isSticky, setIsSticky] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 30) {
+        setIsSticky(true);
+      } else {
+        setIsSticky(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const handleNavClick = (e, path) => {
+    e.preventDefault();
+    window.history.pushState({}, '', path);
+    window.dispatchEvent(new PopStateEvent('popstate'));
+    window.scrollTo(0, 0);
+  };
+
   return (
     <div className="np-root">
       {/* ── HEADER ── */}
-      <header className="np-header">
-        <div className="np-header-inner">
-          <div className="np-logo">
-            <img src={asset('nextpathlogo.png')} alt="NextPath Logo" style={{ height: '32px', objectFit: 'contain' }} />
-          </div>
+      <header className={`np-header ${isSticky ? 'np-header--sticky' : ''}`}>
+        <div className="np-header-inner container">
+          <a className="np-logo-link" href="/" onClick={(e) => handleNavClick(e, '/')}>
+            Nina Novikoff
+          </a>
           <nav className="np-nav">
-            <a className="np-nav-link" href="/">início</a>
-            <a className="np-nav-link" href="/#projetos">Portfolio</a>
-            <a className="np-nav-link" href="/#contato">Contato</a>
+            <a className="np-nav-link" href="/" onClick={(e) => handleNavClick(e, '/')}>Início</a>
+            <a className="np-nav-link" href="/#projetos" onClick={(e) => handleNavClick(e, '/#projetos')}>Portfolio</a>
+            <a className="np-nav-link" href="/#contato" onClick={(e) => handleNavClick(e, '/#contato')}>Contato</a>
           </nav>
         </div>
       </header>
@@ -72,7 +95,7 @@ export default function NextPath() {
       <section className="np-hero">
         <div className="np-hero-inner">
           <div className="np-hero-left">
-            <a href="/#projetos" className="np-back-btn" aria-label="Voltar">
+            <a href="/#projetos" className="np-back-btn" onClick={(e) => handleNavClick(e, '/#projetos')} aria-label="Voltar">
               <svg width="16" height="31" viewBox="0 0 16 31" fill="none">
                 <path d={svgPaths.backArrow} fill="white" />
               </svg>
@@ -299,7 +322,7 @@ export default function NextPath() {
 
             <div className="np-palette-row">
               <div className="np-identity-block">
-                <span className="np-identity-name">NextPath</span>
+                <img src={asset('nextpathlogo.png')} alt="NextPath Logo" style={{ height: '42px', objectFit: 'contain' }} />
               </div>
               <div className="np-color-swatches" style={{ gap: '8px' }}>
                 <img src={asset('paletacores1.png')} alt="Paleta de cores 1" style={{ height: '50px', objectFit: 'contain' }} />
