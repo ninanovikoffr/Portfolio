@@ -479,9 +479,9 @@ export default function NextPath() {
             <div className="np-confirmacao-card">
               <p className="np-confirmacao-label">Mensagens de confirmação — decisão de design</p>
               <div className="np-confirmacao-images">
-                <img src={asset('popup1.png')} className="np-confirmacao-img" alt="Confirmação 1" />
-                <img src={asset('popup2.png')} className="np-confirmacao-img" alt="Confirmação 2" />
-                <img src={asset('popup3.png')} className="np-confirmacao-img" alt="Confirmação 3" />
+                <img src={asset('popup1.svg')} className="np-confirmacao-img" alt="Confirmação 1" />
+                <img src={asset('popup2.svg')} className="np-confirmacao-img" alt="Confirmação 2" />
+                <img src={asset('popup3.svg')} className="np-confirmacao-img" alt="Confirmação 3" />
               </div>
             </div>
 

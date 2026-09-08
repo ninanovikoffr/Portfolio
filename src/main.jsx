@@ -381,7 +381,7 @@ function Skills() {
               rel="noopener noreferrer"
             >
               <img src={asset('dicoroxo.png')} alt="" />
-              <span>Projeto de Algoritmos em Grafos em Python</span>
+              <span>Otimização de problema de rotas em arcos capacitados em Python</span>
             </a>
           </div>
         </div>
