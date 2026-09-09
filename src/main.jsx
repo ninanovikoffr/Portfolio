@@ -249,6 +249,7 @@ function FeaturedProject({ project }) {
     if (domRef.current) {
       observer.observe(domRef.current);
     }
+    
 
     return () => observer.disconnect();
   }, []);
